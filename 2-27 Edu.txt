@@ -1,0 +1,30 @@
+EtherChannel = Channel-Group = Port-Channel
+
+LACP, PAgP, ON
+
+묶으면 빠르다.
+
+1) L2 EtherChannel
+[LACP]
+int ran f0/23 - 24
+sw tr en dot
+sw mo tr
+channel-protocol lacp 
+channel-group # mode {active | passive}
+[PAgP]
+int ran f0/23 - 24
+sw tr en dot
+sw mo tr
+channel-protocol pagp
+channel-group # mode {desirable | auto}
+[ON]
+int ran f0/23 - 24
+sw tr en dot
+sw mo tr
+channel-group # mode on
+
+확인
+show etherchannel summary
+
+EtherChannel 삭제
+no int port-channel #
